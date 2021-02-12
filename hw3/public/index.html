@@ -1,0 +1,145 @@
+<!--@author Blake Nygren-->
+<html>
+
+    <title>CS341_HW1</title>
+
+    <!--link to external CSS file in head-->
+    <head>
+        <link rel="stylesheet" href="stylesheets/nygren23.css">
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">            
+        </script>
+    </head>
+
+    <div id="name">
+        <h1>Cheesecake Order Form</h1>
+    </div>
+
+    <!--Start of body of website-->
+    <body>
+        <div id="image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" alt="Cheesecake" width="150" height="150" >
+        </div>
+    
+        
+        <!--used form contain select and radio buttons-->
+        <form id="orderForm">
+
+            <p id="quantityLabel" style="margin:0%; padding:0%;">Quantity Topping</p><br>
+            <tr>
+                <input type="radio" name="topping" style="margin-left: 4.7em;" checked="true" value="Plain">
+                <label for="plain">Plain</label><br>
+            </tr>
+
+            <tr>
+                <td>
+                    <select id="quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="radio" name="topping" style="margin-left: 2em; background:black;" value="Cherry">
+                    <label for="cherry">Cherry</label><br>
+                </td>
+            </tr>
+            <tr>
+                <input type="radio" name="topping" style="margin-left: 4.7em;" value="Chocolate">
+                <label for="chocolate">Chocolate</label>
+            </tr><br><br>
+        
+
+        <p style="margin:0%; padding:0%;">Notes:</p>
+
+        <!--
+            External Citation: 
+                Date: 1/28/21
+                Problem: Did not know how to make placeholder text and set length/width
+                Resource: https://www.w3schools.com/tags/tag_textarea.asp
+                Solution: Used the documentation about the tag to get proper attributes
+        -->
+        <textarea id="orderNotes" placeholder="Enter any special instructions here" rows="5" cols="50" ></textarea><br><br>
+
+        <input id="submitButton" type="button" value="Order">
+
+    </form>
+
+        <!--Script to handle form submission-->
+        <script>
+            $(document).ready(function(){
+                $("#submitButton").click(function(){
+                    var notes = $.trim($("#orderNotes").val());
+
+                    if(notes.includes("vegan")){
+                        alert("WARNING: the cheesecake you have selected contains dairy");
+                    } 
+
+                    $("#orderForm").hide();
+                    //var formTopping = "";
+                    var formQuantity = $("#quantity").val();
+                    var formTopping = $("[name=topping]:checked").val();
+                    
+                    var thanks = "<p>Thank you! Your order has been placed</p>";
+                    var topping = "<p>Topping: " + formTopping + "</p>";
+                    var quantity = "<p>Quantity: " + formQuantity + "</p>";
+                    var notes = "<p>Your Notes: " + notes + "</p><br>";
+                    
+                    
+                    $("#image").append(thanks, topping, quantity, notes);
+                 });
+            });
+        </script>
+
+    </body>
+    <!--End of body of website-->
+
+    
+    <div id="stats">
+
+        <div class="dropdown">
+            <h3>Orders for
+                <button class="dropbtn" id="dropbtn">Jan</button>
+            
+                    <div class="dropdown-content">
+                        <a class="month">Jan</a>
+                        <a class="month">Feb</a>
+                        <a class="month">Mar</a>
+                        <a class="month">Apr</a>
+                        <a class="month">May</a>
+                        <a class="month">Jun</a>
+                        <a class="month">Jul</a>
+                        <a class="month">Aug</a>
+                        <a class="month">Sep</a>
+                        <a class="month">Oct</a>
+                        <a class="month">Nov</a>
+                        <a class="month">Dec</a>
+
+                    </div>
+                </h3>
+            
+        </div>
+    
+        <ul class="orderHistory" >
+            <li>11 cherry</li> 
+            <li>17 chocolate</li>
+            <li>31 plain</li>
+        </ul><br><br><br>
+
+    </div>
+    
+    <!--jquery listener for month menu
+        to get the value of the clicked month and change the buttonn text-->
+    <script>
+        $(document).ready(function(){
+            $(".month").click(function(){
+                var newMonth = $(this).text();
+                $(".dropbtn").text(newMonth);
+                
+            });
+        });
+    </script>
+    
+</html>
