@@ -7,6 +7,5 @@ monthSelectHandler = function(event) {
 
 
 $(function(){
-    $(".month").click(monthSelectHandler);
-                
+    $(".month").click(monthSelectHandler);               
 });

@@ -23,5 +23,5 @@ submitHandler = function( event ) {
 
 
 $(function(){
-     $("#submitButton").click(submitHandler);
+    $("#submitButton").click(submitHandler);
 });
