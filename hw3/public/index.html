@@ -68,30 +68,7 @@
     </form>
 
         <!--Script to handle form submission-->
-        <script>
-            $(document).ready(function(){
-                $("#submitButton").click(function(){
-                    var notes = $.trim($("#orderNotes").val());
-
-                    if(notes.includes("vegan")){
-                        alert("WARNING: the cheesecake you have selected contains dairy");
-                    } 
-
-                    $("#orderForm").hide();
-                    //var formTopping = "";
-                    var formQuantity = $("#quantity").val();
-                    var formTopping = $("[name=topping]:checked").val();
-                    
-                    var thanks = "<p>Thank you! Your order has been placed</p>";
-                    var topping = "<p>Topping: " + formTopping + "</p>";
-                    var quantity = "<p>Quantity: " + formQuantity + "</p>";
-                    var notes = "<p>Your Notes: " + notes + "</p><br>";
-                    
-                    
-                    $("#image").append(thanks, topping, quantity, notes);
-                 });
-            });
-        </script>
+        <script src="javascripts/formSubmit.js"></script>
 
     </body>
     <!--End of body of website-->
@@ -132,14 +109,6 @@
     
     <!--jquery listener for month menu
         to get the value of the clicked month and change the buttonn text-->
-    <script>
-        $(document).ready(function(){
-            $(".month").click(function(){
-                var newMonth = $(this).text();
-                $(".dropbtn").text(newMonth);
-                
-            });
-        });
-    </script>
+    <script src="javascripts/monthSelector.js"></script>
     
 </html>
